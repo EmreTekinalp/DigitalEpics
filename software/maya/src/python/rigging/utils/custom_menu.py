@@ -39,37 +39,51 @@ def digital_epics():
 
     # modeling menu item
     pm.menuItem(d=True, dl='Modeling')
+    pm.menuItem(label='asset manager', parent=custom_menu,
+                command="from rigging.utils import menu_commands;"
+                        "reload(menu_commands);menu_commands.asset_manager();")
     pm.menuItem(label='save model', parent=custom_menu,
-                command="from utility import menu_commands;"
+                command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.save_model();")
     pm.menuItem(label='load model', parent=custom_menu,
                 command="print 'Open model scene folder'")
 
     # rigging menu item
+    # guides
     pm.menuItem(d=True, dl='Rigging')
-    pm.menuItem(label='save guides', parent=custom_menu,
+    cmds.menuItem(subMenu=True, label='guides')
+    pm.menuItem(label='save guides',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.save_guides();")
-    pm.menuItem(label='load guides', parent=custom_menu,
+    pm.menuItem(label='load guides',
                 command="print 'load guides'")
-    pm.menuItem(label='mirror guides', parent=custom_menu,
+    pm.menuItem(label='mirror guides',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.mirror_guides();")
-    pm.menuItem(label='save control shapes', parent=custom_menu,
+    cmds.setParent('..', menu=True)
+
+    # controls
+    cmds.menuItem(subMenu=True, label='controls')
+    pm.menuItem(label='save control shapes',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.save_control_shapes();")
-    pm.menuItem(label='load control shapes', parent=custom_menu,
+    pm.menuItem(label='load control shapes',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.load_control_shapes();")
-    pm.menuItem(label='mirror control shapes', parent=custom_menu,
+    pm.menuItem(label='mirror control shapes',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.mirror_control_shapes();")
-    pm.menuItem(label='save constraints', parent=custom_menu,
+    cmds.setParent('..', menu=True)
+
+    # constraints
+    cmds.menuItem(subMenu=True, label='constraints')
+    pm.menuItem(label='save constraints',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.save_constraints();")
-    pm.menuItem(label='load constraints', parent=custom_menu,
+    pm.menuItem(label='load constraints',
                 command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.load_constraints();")
+    cmds.setParent('..', menu=True)
 
     # animation menu item
     pm.menuItem(d=True, dl='Animation')
@@ -77,3 +91,9 @@ def digital_epics():
                 command="print 'Publish animation scene'")
     pm.menuItem(label='load animation', parent=custom_menu,
                 command="print 'Open animation scene folder'")
+
+    # camera menu item
+    pm.menuItem(d=True, dl='Camera')
+    pm.menuItem(label='rsCameraUI',
+                command="from rigging.utils import camera_rig;"
+                        "reload(camera_rig);camera_rig.rsCameraUIBuild();")

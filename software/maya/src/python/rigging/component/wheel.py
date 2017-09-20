@@ -93,6 +93,7 @@ class Wheel(component.Component):
         self.ctrl_rod_out = control.Control(self, self.guide_rod_out, 0)
 
         self.setup_bank()
+        # self.setup_rod()
         self.plug()
 
     def setup_bank(self):
@@ -110,6 +111,10 @@ class Wheel(component.Component):
         self.ctrl_rotation.srt.bankInOut.connect(cnd_out.colorIfTrueR)
         cnd_out.outColorR.connect(self.ctrl_bank_out.buffers[0].rz)
         cnd_out.operation.set(4)
+
+    def setup_rod(self):
+        """Setup a a rod ik rig"""
+        self.jnt_rod_in = pm.createNode('joint', n=self.guide_rotation)
 
     def plug(self):
         """Setup the plug and socket connection"""

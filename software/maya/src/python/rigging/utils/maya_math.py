@@ -7,9 +7,9 @@
 @author: Emre Tekinalp
 @date: Sep 16, 2017
 @contact: e.tekinalp@icloud.com
-@package: tool/components/wheel
-@brief: wheel component
-@requires: tool.components.component
+@package: utils/maya_math
+@brief: math functions used in maya
+@requires: math
 @version: 1.0.0
 """
 
@@ -17,7 +17,6 @@ __author__ = 'Emre Tekinalp'
 __copyright__ = 'Copyright (C) 2017 Digital Epics'
 __license__ = 'Digital Epics'
 __version__ = '1.0'
-
 
 # python
 import math

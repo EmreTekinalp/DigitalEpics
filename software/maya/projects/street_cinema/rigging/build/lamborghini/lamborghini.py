@@ -9,7 +9,7 @@
 @contact: e.tekinalp@icloud.com
 @package: assets/lamborghini
 @brief: build file for the lamborghini
-@requires: utility.node; tool.component
+@requires: utils.menu_command; component.basic; component.wheel; core.interface
 @version: 1.0.0
 """
 
@@ -20,7 +20,6 @@ __version__ = '1.0'
 
 # python
 import inspect
-import os
 
 # maya
 from maya import cmds
@@ -106,4 +105,4 @@ class Lamborghini(interface.RigInterface):
         self.wheel_rr.socket(self.chassy_rear.ctrl.srt)
 
 asset = Lamborghini()
-asset.run(7)
+asset.run(interface.FINAL)

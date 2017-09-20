@@ -7,9 +7,9 @@
 @author: Emre Tekinalp
 @date: Sep 17, 2017
 @contact: e.tekinalp@icloud.com
-@package: utility/menu_command
+@package: utils/menu_command
 @brief: include menu commands to call
-@requires: utility.node
+@requires: Nothing
 @version: 1.0.0
 """
 
@@ -18,10 +18,10 @@ __copyright__ = 'Copyright (C) 2017 Digital Epics'
 __license__ = 'Digital Epics'
 __version__ = '1.0'
 
-
 # python
 import json
 import os
+import sys
 
 # maya
 from maya import cmds
@@ -179,3 +179,10 @@ def load_constraints(path=None):
             cmds.orientConstraint(value[0], key, mo=True)
         cmds.scaleConstraint(value[0], key, mo=True)
     print 'Loaded constraints from: %s' % path
+
+
+def asset_manager():
+    """Open the asset manager from the modeling section"""
+    from modeling.tool.asset_manager import main
+    reload(main)
+    main.main()

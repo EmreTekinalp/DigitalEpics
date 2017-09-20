@@ -7,9 +7,9 @@
 @author: Emre Tekinalp
 @date: Sep 16, 2017
 @contact: e.tekinalp@icloud.com
-@package: tool/components/atom
+@package: component/basic
 @brief: basic atom component
-@requires: tool.components.component
+@requires: core.component; utils.control
 @version: 1.0.0
 """
 
@@ -18,9 +18,7 @@ __copyright__ = 'Copyright (C) 2017 Digital Epics'
 __license__ = 'Digital Epics'
 __version__ = '1.0'
 
-
 # maya
-from maya import cmds
 import pymel.core as pm
 
 # third party modules

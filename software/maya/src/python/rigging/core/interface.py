@@ -29,8 +29,17 @@ from maya import cmds
 import pymel.core as pm
 
 # third party modules
+from rigging.utils import attribute
 from rigging.utils import menu_commands
+reload(attribute)
 reload(menu_commands)
+
+# CONSTANTS
+ASSET = 0
+GUIDE = 4
+PUPPET = 7
+EXTRAS = 8
+FINAL = 9
 
 
 class RigInterface(object):
@@ -58,6 +67,10 @@ class RigInterface(object):
             self.load_control_shapes()
         if stage > 6:
             self.load_constraints()
+        if stage > 7:
+            self.extras()
+        if stage > 8:
+            self.finalize()
 
     def load_asset(self):
         """Load the latest model version of the asset into a new scene file"""
@@ -120,3 +133,12 @@ class RigInterface(object):
     def load_constraints(self):
         """Load the constraints"""
         menu_commands.load_constraints()
+
+    @abstractmethod
+    def extras(self):
+        """Implement function to deal with extra functions for the rig setup"""
+        menu_commands.load_constraints()
+
+    def finalize(self):
+        """prepare the rig to be ready for a publish"""
+        attribute.connect_construction_history(self.asset_name)
