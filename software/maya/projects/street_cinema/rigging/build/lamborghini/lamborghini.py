@@ -106,3 +106,7 @@ class Lamborghini(interface.RigInterface):
 
 asset = Lamborghini()
 asset.run(interface.FINAL)
+
+
+from projects.street_cinema.rigging.build.lamborghini import lamborghini
+reload(lamborghini)

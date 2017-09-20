@@ -76,7 +76,7 @@ class RigInterface(object):
         """Load the latest model version of the asset into a new scene file"""
         project_path = cmds.workspace(q=True, fn=True)
         current_file = os.path.abspath(self.current_file)
-        scene_path = os.path.abspath(os.path.join(project_path, 'scenes'))
+        scene_path = os.path.abspath(os.path.join(project_path, 'scenes', 'street_cinema_intro'))
         asset_name = os.path.splitext(os.path.basename(current_file))[0]
         asset_path = os.path.abspath(os.path.join(scene_path, asset_name))
         model_path = os.path.abspath(os.path.join(asset_path, 'modeling'))
