@@ -1,0 +1,911 @@
+{
+    "chassy_C_front_ctrl_srt": {
+        "chassy_C_front_ctrl_srtShape.cv[0]": [
+            73.45793916388772, 
+            31.656990051269528, 
+            257.3472396284202
+        ], 
+        "chassy_C_front_ctrl_srtShape.cv[1]": [
+            -73.45793916388772, 
+            31.656990051269528, 
+            257.3472396284202
+        ], 
+        "chassy_C_front_ctrl_srtShape.cv[2]": [
+            -73.45793916388772, 
+            31.656990051269528, 
+            228.68895293728133
+        ], 
+        "chassy_C_front_ctrl_srtShape.cv[3]": [
+            73.45793916388772, 
+            31.656990051269528, 
+            228.68895293728133
+        ], 
+        "chassy_C_front_ctrl_srtShape.cv[4]": [
+            73.45793916388772, 
+            31.656990051269528, 
+            257.3472396284202
+        ]
+    }, 
+    "chassy_C_mid_ctrl_srt": {
+        "chassy_C_mid_ctrl_srtShape.cv[0]": [
+            52.446935406982625, 
+            109.83955204908123, 
+            96.31137908557739
+        ], 
+        "chassy_C_mid_ctrl_srtShape.cv[1]": [
+            -52.446935406982625, 
+            109.83955204908123, 
+            96.31137908557739
+        ], 
+        "chassy_C_mid_ctrl_srtShape.cv[2]": [
+            -59.51445823881249, 
+            127.44836055673676, 
+            -80.552673432808
+        ], 
+        "chassy_C_mid_ctrl_srtShape.cv[3]": [
+            59.51445823881249, 
+            127.44836055673676, 
+            -80.552673432808
+        ], 
+        "chassy_C_mid_ctrl_srtShape.cv[4]": [
+            52.446935406982625, 
+            109.83955204908123, 
+            96.31137908557739
+        ]
+    }, 
+    "chassy_C_rear_ctrl_srt": {
+        "chassy_C_rear_ctrl_srtShape.cv[0]": [
+            78.34792542664196, 
+            31.656978607177734, 
+            -226.328945620652
+        ], 
+        "chassy_C_rear_ctrl_srtShape.cv[1]": [
+            -78.34792542664196, 
+            31.656978607177734, 
+            -226.328945620652
+        ], 
+        "chassy_C_rear_ctrl_srtShape.cv[2]": [
+            -78.34792542664196, 
+            31.656978607177734, 
+            -245.78860304322203
+        ], 
+        "chassy_C_rear_ctrl_srtShape.cv[3]": [
+            78.34792542664196, 
+            31.656978607177734, 
+            -245.78860304322203
+        ], 
+        "chassy_C_rear_ctrl_srtShape.cv[4]": [
+            78.34792542664196, 
+            31.656978607177734, 
+            -226.328945620652
+        ]
+    }, 
+    "chassy_L_bank_ctrl_srt": {
+        "chassy_L_bank_ctrl_srtShape.cv[0]": [
+            124.22164483904916, 
+            31.656984329223633, 
+            32.60089418156639
+        ], 
+        "chassy_L_bank_ctrl_srtShape.cv[1]": [
+            84.9877187299277, 
+            31.656984329223633, 
+            32.60089418156639
+        ], 
+        "chassy_L_bank_ctrl_srtShape.cv[2]": [
+            84.9877187299277, 
+            31.656984329223633, 
+            -63.21532365544334
+        ], 
+        "chassy_L_bank_ctrl_srtShape.cv[3]": [
+            124.22164483904916, 
+            31.656984329223633, 
+            -63.21532365544334
+        ], 
+        "chassy_L_bank_ctrl_srtShape.cv[4]": [
+            124.22164483904916, 
+            31.656984329223633, 
+            32.60089418156639
+        ]
+    }, 
+    "chassy_R_bank_ctrl_srt": {
+        "chassy_R_bank_ctrl_srtShape.cv[0]": [
+            -124.22164483904916, 
+            31.656984329223633, 
+            32.60089418156639
+        ], 
+        "chassy_R_bank_ctrl_srtShape.cv[1]": [
+            -84.9877187299277, 
+            31.656984329223633, 
+            32.60089418156639
+        ], 
+        "chassy_R_bank_ctrl_srtShape.cv[2]": [
+            -84.9877187299277, 
+            31.656984329223633, 
+            -63.21532365544334
+        ], 
+        "chassy_R_bank_ctrl_srtShape.cv[3]": [
+            -124.22164483904916, 
+            31.656984329223633, 
+            -63.21532365544334
+        ], 
+        "chassy_R_bank_ctrl_srtShape.cv[4]": [
+            -124.22164483904916, 
+            31.656984329223633, 
+            32.60089418156639
+        ]
+    }, 
+    "god_C_main_ctrl_srt": {
+        "god_C_main_ctrl_srtShape.cv[0]": [
+            110.96189785326541, 
+            0.0, 
+            215.0578704418122
+        ], 
+        "god_C_main_ctrl_srtShape.cv[1]": [
+            -110.96189785326541, 
+            0.0, 
+            215.0578704418122
+        ], 
+        "god_C_main_ctrl_srtShape.cv[2]": [
+            -110.96189785326541, 
+            0.0, 
+            -215.0578704418122
+        ], 
+        "god_C_main_ctrl_srtShape.cv[3]": [
+            110.96189785326541, 
+            0.0, 
+            -215.0578704418122
+        ], 
+        "god_C_main_ctrl_srtShape.cv[4]": [
+            110.96189785326541, 
+            0.0, 
+            215.0578704418122
+        ]
+    }, 
+    "vehicle_C_body_ctrl_srt": {
+        "vehicle_C_body_ctrl_srtShape.cv[0]": [
+            98.64376134424613, 
+            10.781095964116984, 
+            77.21126372746355
+        ], 
+        "vehicle_C_body_ctrl_srtShape.cv[1]": [
+            -98.64376134424613, 
+            10.781095964116984, 
+            77.21126372746355
+        ], 
+        "vehicle_C_body_ctrl_srtShape.cv[2]": [
+            -98.64376134424613, 
+            10.781095964116984, 
+            -103.7433049356244
+        ], 
+        "vehicle_C_body_ctrl_srtShape.cv[3]": [
+            98.64376134424613, 
+            10.781095964116984, 
+            -103.7433049356244
+        ], 
+        "vehicle_C_body_ctrl_srtShape.cv[4]": [
+            98.64376134424613, 
+            10.781095964116984, 
+            77.21126372746355
+        ]
+    }, 
+    "wheel_L_front_bankIn_ctrl_srt": {
+        "wheel_L_front_bankIn_ctrl_srtShape.cv[0]": [
+            74.07770807459235, 
+            -0.8864278797710624, 
+            119.2864500068703
+        ], 
+        "wheel_L_front_bankIn_ctrl_srtShape.cv[1]": [
+            62.60347597648595, 
+            -0.8864278797710627, 
+            119.2864500068703
+        ], 
+        "wheel_L_front_bankIn_ctrl_srtShape.cv[2]": [
+            62.60347597648595, 
+            -0.8864278797710627, 
+            105.86834497071598
+        ], 
+        "wheel_L_front_bankIn_ctrl_srtShape.cv[3]": [
+            74.07770807459235, 
+            -0.8864278797710624, 
+            105.86834497071598
+        ], 
+        "wheel_L_front_bankIn_ctrl_srtShape.cv[4]": [
+            74.07770807459235, 
+            -0.8864278797710624, 
+            119.2864500068703
+        ]
+    }, 
+    "wheel_L_front_bankOut_ctrl_srt": {
+        "wheel_L_front_bankOut_ctrl_srtShape.cv[0]": [
+            97.23730923723713, 
+            -0.8864278797710623, 
+            119.2864500068703
+        ], 
+        "wheel_L_front_bankOut_ctrl_srtShape.cv[1]": [
+            85.76307713913071, 
+            -0.8864278797710624, 
+            119.2864500068703
+        ], 
+        "wheel_L_front_bankOut_ctrl_srtShape.cv[2]": [
+            85.76307713913071, 
+            -0.8864278797710624, 
+            105.86834497071598
+        ], 
+        "wheel_L_front_bankOut_ctrl_srtShape.cv[3]": [
+            97.23730923723713, 
+            -0.8864278797710623, 
+            105.86834497071598
+        ], 
+        "wheel_L_front_bankOut_ctrl_srtShape.cv[4]": [
+            97.23730923723713, 
+            -0.8864278797710623, 
+            119.2864500068703
+        ]
+    }, 
+    "wheel_L_front_rodIn_ctrl_srt": {
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[0]": [
+            30.453412741018663, 
+            22.78688177747455, 
+            121.16731665505888
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[1]": [
+            30.365882665710206, 
+            23.111464313629618, 
+            121.94602435489841
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[2]": [
+            30.27861327475675, 
+            22.786881777459037, 
+            122.72476131258391
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[3]": [
+            30.242725793798776, 
+            22.00327021654205, 
+            123.04735397982452
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[4]": [
+            30.27924262246207, 
+            21.219658655631484, 
+            122.72483194727272
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[5]": [
+            30.36677269777052, 
+            20.895076119476418, 
+            121.94612424743319
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[6]": [
+            30.454042088723956, 
+            21.219658655647, 
+            121.1673872897477
+        ], 
+        "wheel_L_front_rodIn_ctrl_srtShape.cv[7]": [
+            30.489929569681948, 
+            22.003270216563994, 
+            120.84479462250712
+        ]
+    }, 
+    "wheel_L_front_rodOut_ctrl_srt": {
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[0]": [
+            65.80783727453581, 
+            22.801328922364, 
+            126.71237612884204
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[1]": [
+            65.89510666548959, 
+            23.12591145852681, 
+            125.93363917115329
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[2]": [
+            65.98263674079772, 
+            22.801328922363975, 
+            125.15493147131703
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[3]": [
+            66.01915356946004, 
+            22.017717361450178, 
+            124.83240943877296
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[4]": [
+            65.98326608850122, 
+            21.234105800536422, 
+            125.15500210602124
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[5]": [
+            65.89599669754739, 
+            20.9095232643736, 
+            125.93373906370998
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[6]": [
+            65.80846662223931, 
+            21.234105800536437, 
+            126.71244676354624
+        ], 
+        "wheel_L_front_rodOut_ctrl_srtShape.cv[7]": [
+            65.77194979357694, 
+            22.017717361450224, 
+            127.03496879609034
+        ]
+    }, 
+    "wheel_L_front_rotation_ctrl_srt": {
+        "wheel_L_front_rotation_ctrl_srtShape.cv[0]": [
+            97.75050462728754, 
+            55.0612697690031, 
+            88.77269553251053
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[1]": [
+            97.75050462728755, 
+            64.7556398456619, 
+            112.1769752502441
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[2]": [
+            97.75050462728754, 
+            55.061269769003104, 
+            135.58125496797766
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[3]": [
+            97.75050462728755, 
+            31.656990051269542, 
+            145.27562504463648
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[4]": [
+            97.75050462728755, 
+            8.252710333535976, 
+            135.58125496797766
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[5]": [
+            97.75050462728755, 
+            -1.4416597431228482, 
+            112.17697525024411
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[6]": [
+            97.75050462728755, 
+            8.252710333535962, 
+            88.77269553251054
+        ], 
+        "wheel_L_front_rotation_ctrl_srtShape.cv[7]": [
+            97.75050462728755, 
+            31.656990051269513, 
+            79.07832545585173
+        ]
+    }, 
+    "wheel_L_rear_bankIn_ctrl_srt": {
+        "wheel_L_rear_bankIn_ctrl_srtShape.cv[0]": [
+            61.53356719908892, 
+            -0.45243835449218717, 
+            -152.9820525946215
+        ], 
+        "wheel_L_rear_bankIn_ctrl_srtShape.cv[1]": [
+            75.41850574427067, 
+            -0.4524383544921876, 
+            -152.98205259462154
+        ], 
+        "wheel_L_rear_bankIn_ctrl_srtShape.cv[2]": [
+            75.41850574427065, 
+            -0.4524383544921873, 
+            -132.906342573914
+        ], 
+        "wheel_L_rear_bankIn_ctrl_srtShape.cv[3]": [
+            61.533567199088864, 
+            -0.4524383544921874, 
+            -132.90634257391397
+        ], 
+        "wheel_L_rear_bankIn_ctrl_srtShape.cv[4]": [
+            61.53356719908892, 
+            -0.45243835449218717, 
+            -152.9820525946215
+        ]
+    }, 
+    "wheel_L_rear_bankOut_ctrl_srt": {
+        "wheel_L_rear_bankOut_ctrl_srtShape.cv[0]": [
+            84.5226771603394, 
+            -0.4524383544921877, 
+            -152.98205259462156
+        ], 
+        "wheel_L_rear_bankOut_ctrl_srtShape.cv[1]": [
+            98.40761570552117, 
+            -0.4524383544921878, 
+            -152.9820525946216
+        ], 
+        "wheel_L_rear_bankOut_ctrl_srtShape.cv[2]": [
+            98.40761570552114, 
+            -0.4524383544921874, 
+            -132.90634257391406
+        ], 
+        "wheel_L_rear_bankOut_ctrl_srtShape.cv[3]": [
+            84.52267716033937, 
+            -0.4524383544921878, 
+            -132.90634257391403
+        ], 
+        "wheel_L_rear_bankOut_ctrl_srtShape.cv[4]": [
+            84.5226771603394, 
+            -0.4524383544921877, 
+            -152.98205259462156
+        ]
+    }, 
+    "wheel_L_rear_rodIn_ctrl_srt": {
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[0]": [
+            42.00167342436366, 
+            30.402223538458585, 
+            -139.02162791788555
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[1]": [
+            41.91614481499209, 
+            30.717048973574926, 
+            -139.80455244875208
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[2]": [
+            41.8770201646499, 
+            30.38438047428799, 
+            -140.58378408951577
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[3]": [
+            41.907218162884405, 
+            29.59909073570576, 
+            -140.90285951324773
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[4]": [
+            41.98904923188637, 
+            28.82119183629727, 
+            -140.57486866414573
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[5]": [
+            42.07457784125793, 
+            28.50636640118093, 
+            -139.7919441332793
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[6]": [
+            42.113702491600094, 
+            28.83903490046787, 
+            -139.0127124925155
+        ], 
+        "wheel_L_rear_rodIn_ctrl_srtShape.cv[7]": [
+            42.083504493365616, 
+            29.624324639050105, 
+            -138.69363706878354
+        ]
+    }, 
+    "wheel_L_rear_rodOut_ctrl_srt": {
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[0]": [
+            67.64534597031403, 
+            32.21927274723718, 
+            -142.66097830338313
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[1]": [
+            67.68447062065619, 
+            32.551941246524144, 
+            -141.88174666261935
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[2]": [
+            67.76999923002775, 
+            32.23711581140783, 
+            -141.09882213175288
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[3]": [
+            67.85183029902974, 
+            31.459216911999356, 
+            -140.77083128265068
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[4]": [
+            67.88202829726421, 
+            30.67392717341712, 
+            -141.08990670638258
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[5]": [
+            67.84290364692207, 
+            30.34125867413015, 
+            -141.86913834714636
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[6]": [
+            67.75737503755047, 
+            30.656084109246446, 
+            -142.65206287801288
+        ], 
+        "wheel_L_rear_rodOut_ctrl_srtShape.cv[7]": [
+            67.67554396854847, 
+            31.433983008654916, 
+            -142.98005372711495
+        ]
+    }, 
+    "wheel_L_rear_rotation_ctrl_srt": {
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[0]": [
+            96.99761456241548, 
+            55.56279798853611, 
+            -118.88558534276265
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[1]": [
+            96.99761456241552, 
+            65.46491259593634, 
+            -142.79140472412107
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[2]": [
+            96.99761456241558, 
+            55.562797988536126, 
+            -166.69722410547945
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[3]": [
+            96.99761456241558, 
+            31.656978607177745, 
+            -176.59933871287967
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[4]": [
+            96.99761456241559, 
+            7.7511592258193645, 
+            -166.69722410547942
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[5]": [
+            96.99761456241552, 
+            -2.1509553815808786, 
+            -142.79140472412104
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[6]": [
+            96.99761456241548, 
+            7.751159225819357, 
+            -118.88558534276271
+        ], 
+        "wheel_L_rear_rotation_ctrl_srtShape.cv[7]": [
+            96.99761456241546, 
+            31.656978607177717, 
+            -108.98347073536243
+        ]
+    }, 
+    "wheel_R_front_bankIn_ctrl_srt": {
+        "wheel_R_front_bankIn_ctrl_srtShape.cv[0]": [
+            -74.07770807459234, 
+            -0.8864278797710629, 
+            119.2864500068703
+        ], 
+        "wheel_R_front_bankIn_ctrl_srtShape.cv[1]": [
+            -62.60347597648595, 
+            -0.886427879771063, 
+            119.28645000687031
+        ], 
+        "wheel_R_front_bankIn_ctrl_srtShape.cv[2]": [
+            -62.60347597648595, 
+            -0.886427879771063, 
+            105.868344970716
+        ], 
+        "wheel_R_front_bankIn_ctrl_srtShape.cv[3]": [
+            -74.07770807459235, 
+            -0.8864278797710624, 
+            105.86834497071598
+        ], 
+        "wheel_R_front_bankIn_ctrl_srtShape.cv[4]": [
+            -74.07770807459234, 
+            -0.8864278797710629, 
+            119.2864500068703
+        ]
+    }, 
+    "wheel_R_front_bankOut_ctrl_srt": {
+        "wheel_R_front_bankOut_ctrl_srtShape.cv[0]": [
+            -97.23730923723711, 
+            -0.8864278797710627, 
+            119.2864500068703
+        ], 
+        "wheel_R_front_bankOut_ctrl_srtShape.cv[1]": [
+            -85.76307713913071, 
+            -0.8864278797710629, 
+            119.28645000687031
+        ], 
+        "wheel_R_front_bankOut_ctrl_srtShape.cv[2]": [
+            -85.76307713913073, 
+            -0.8864278797710624, 
+            105.868344970716
+        ], 
+        "wheel_R_front_bankOut_ctrl_srtShape.cv[3]": [
+            -97.23730923723713, 
+            -0.8864278797710623, 
+            105.86834497071598
+        ], 
+        "wheel_R_front_bankOut_ctrl_srtShape.cv[4]": [
+            -97.23730923723711, 
+            -0.8864278797710627, 
+            119.2864500068703
+        ]
+    }, 
+    "wheel_R_front_rodIn_ctrl_srt": {
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[0]": [
+            -30.453412741018685, 
+            22.786881777474537, 
+            121.16731665505895
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[1]": [
+            -30.36588266571025, 
+            23.111464313629615, 
+            121.94602435489841
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[2]": [
+            -30.278613274756793, 
+            22.786881777459037, 
+            122.72476131258401
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[3]": [
+            -30.242725793798808, 
+            22.00327021654205, 
+            123.04735397982458
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[4]": [
+            -30.2792426224621, 
+            21.21965865563148, 
+            122.72483194727278
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[5]": [
+            -30.366772697770546, 
+            20.895076119476403, 
+            121.94612424743323
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[6]": [
+            -30.454042088723988, 
+            21.219658655646995, 
+            121.1673872897477
+        ], 
+        "wheel_R_front_rodIn_ctrl_srtShape.cv[7]": [
+            -30.489929569681973, 
+            22.00327021656398, 
+            120.84479462250712
+        ]
+    }, 
+    "wheel_R_front_rodOut_ctrl_srt": {
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[0]": [
+            -65.80783727453587, 
+            22.801328922363993, 
+            126.71237612884204
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[1]": [
+            -65.89510666548969, 
+            23.125911458526815, 
+            125.93363917115327
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[2]": [
+            -65.98263674079777, 
+            22.801328922363968, 
+            125.154931471317
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[3]": [
+            -66.01915356946019, 
+            22.01771736145019, 
+            124.8324094387729
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[4]": [
+            -65.98326608850141, 
+            21.23410580053644, 
+            125.15500210602121
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[5]": [
+            -65.89599669754753, 
+            20.909523264373618, 
+            125.93373906370992
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[6]": [
+            -65.80846662223945, 
+            21.23410580053645, 
+            126.71244676354623
+        ], 
+        "wheel_R_front_rodOut_ctrl_srtShape.cv[7]": [
+            -65.77194979357704, 
+            22.017717361450256, 
+            127.0349687960903
+        ]
+    }, 
+    "wheel_R_front_rotation_ctrl_srt": {
+        "wheel_R_front_rotation_ctrl_srtShape.cv[0]": [
+            -97.75050462728754, 
+            55.061269769003104, 
+            88.77269553251053
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[1]": [
+            -97.75050462728755, 
+            64.7556398456619, 
+            112.1769752502441
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[2]": [
+            -97.75050462728754, 
+            55.061269769003104, 
+            135.58125496797766
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[3]": [
+            -97.75050462728755, 
+            31.656990051269545, 
+            145.27562504463646
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[4]": [
+            -97.75050462728754, 
+            8.252710333535976, 
+            135.58125496797766
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[5]": [
+            -97.75050462728755, 
+            -1.441659743122841, 
+            112.17697525024411
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[6]": [
+            -97.75050462728754, 
+            8.252710333535966, 
+            88.77269553251054
+        ], 
+        "wheel_R_front_rotation_ctrl_srtShape.cv[7]": [
+            -97.75050462728754, 
+            31.656990051269513, 
+            79.07832545585173
+        ]
+    }, 
+    "wheel_R_rear_bankIn_ctrl_srt": {
+        "wheel_R_rear_bankIn_ctrl_srtShape.cv[0]": [
+            -61.53356719908892, 
+            -0.45243835449218733, 
+            -152.98205259462168
+        ], 
+        "wheel_R_rear_bankIn_ctrl_srtShape.cv[1]": [
+            -75.41850574427067, 
+            -0.452438354492188, 
+            -152.98205259462154
+        ], 
+        "wheel_R_rear_bankIn_ctrl_srtShape.cv[2]": [
+            -75.41850574427065, 
+            -0.4524383544921873, 
+            -132.906342573914
+        ], 
+        "wheel_R_rear_bankIn_ctrl_srtShape.cv[3]": [
+            -61.5335671990889, 
+            -0.4524383544921878, 
+            -132.90634257391415
+        ], 
+        "wheel_R_rear_bankIn_ctrl_srtShape.cv[4]": [
+            -61.53356719908892, 
+            -0.45243835449218733, 
+            -152.98205259462168
+        ]
+    }, 
+    "wheel_R_rear_bankOut_ctrl_srt": {
+        "wheel_R_rear_bankOut_ctrl_srtShape.cv[0]": [
+            -84.52267716033938, 
+            -0.4524383544921877, 
+            -152.98205259462156
+        ], 
+        "wheel_R_rear_bankOut_ctrl_srtShape.cv[1]": [
+            -98.40761570552117, 
+            -0.4524383544921875, 
+            -152.98205259462142
+        ], 
+        "wheel_R_rear_bankOut_ctrl_srtShape.cv[2]": [
+            -98.40761570552115, 
+            -0.45243835449218717, 
+            -132.9063425739139
+        ], 
+        "wheel_R_rear_bankOut_ctrl_srtShape.cv[3]": [
+            -84.52267716033937, 
+            -0.4524383544921876, 
+            -132.90634257391403
+        ], 
+        "wheel_R_rear_bankOut_ctrl_srtShape.cv[4]": [
+            -84.52267716033938, 
+            -0.4524383544921877, 
+            -152.98205259462156
+        ]
+    }, 
+    "wheel_R_rear_rodIn_ctrl_srt": {
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[0]": [
+            -42.00167342436364, 
+            30.402223538458596, 
+            -139.02162791788555
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[1]": [
+            -41.916144814992116, 
+            30.717048973574958, 
+            -139.804552448752
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[2]": [
+            -41.8770201646499, 
+            30.38438047428802, 
+            -140.58378408951577
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[3]": [
+            -41.90721816288441, 
+            29.599090735705772, 
+            -140.90285951324773
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[4]": [
+            -41.98904923188636, 
+            28.821191836297306, 
+            -140.57486866414564
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[5]": [
+            -42.07457784125792, 
+            28.506366401180948, 
+            -139.7919441332791
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[6]": [
+            -42.1137024916001, 
+            28.839034900467883, 
+            -139.01271249251542
+        ], 
+        "wheel_R_rear_rodIn_ctrl_srtShape.cv[7]": [
+            -42.0835044933656, 
+            29.62432463905013, 
+            -138.69363706878346
+        ]
+    }, 
+    "wheel_R_rear_rodOut_ctrl_srt": {
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[0]": [
+            -67.64534597031393, 
+            32.21927274723716, 
+            -142.66097830338282
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[1]": [
+            -67.6844706206561, 
+            32.551941246524116, 
+            -141.88174666261915
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[2]": [
+            -67.76999923002764, 
+            32.23711581140783, 
+            -141.09882213175257
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[3]": [
+            -67.8518302990296, 
+            31.45921691199936, 
+            -140.77083128265045
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[4]": [
+            -67.88202829726414, 
+            30.673927173417116, 
+            -141.08990670638235
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[5]": [
+            -67.84290364692195, 
+            30.341258674130145, 
+            -141.86913834714625
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[6]": [
+            -67.75737503755035, 
+            30.656084109246457, 
+            -142.65206287801269
+        ], 
+        "wheel_R_rear_rodOut_ctrl_srtShape.cv[7]": [
+            -67.67554396854845, 
+            31.433983008654927, 
+            -142.98005372711472
+        ]
+    }, 
+    "wheel_R_rear_rotation_ctrl_srt": {
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[0]": [
+            -96.99761456241549, 
+            55.562797988536104, 
+            -118.88558534276257
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[1]": [
+            -96.99761456241552, 
+            65.46491259593634, 
+            -142.79140472412104
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[2]": [
+            -96.99761456241558, 
+            55.56279798853612, 
+            -166.69722410547942
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[3]": [
+            -96.99761456241562, 
+            31.656978607177745, 
+            -176.59933871287964
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[4]": [
+            -96.99761456241558, 
+            7.7511592258193645, 
+            -166.69722410547942
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[5]": [
+            -96.99761456241552, 
+            -2.1509553815808786, 
+            -142.79140472412104
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[6]": [
+            -96.99761456241549, 
+            7.751159225819354, 
+            -118.88558534276262
+        ], 
+        "wheel_R_rear_rotation_ctrl_srtShape.cv[7]": [
+            -96.99761456241548, 
+            31.656978607177713, 
+            -108.98347073536243
+        ]
+    }
+}

@@ -24,8 +24,8 @@ from maya import cmds
 import pymel.core as pm
 
 # third party modules
-from tool.components import component
-from utility import control, maya_math
+from rigging.core import component
+from rigging.utils import control, maya_math
 reload(component)
 reload(control)
 reload(maya_math)
@@ -37,10 +37,6 @@ class Wheel(component.Component):
     def __init__(self, mod, side, description):
         """Initialize Atom class component subclassing from Base Component"""
         super(Wheel, self).__init__(mod, side, description)
-
-        # vars
-        self.guide_srt = None
-        self.control_srt = None
 
     def guide(self):
         """Implement the wheel guides using locators and various shapes.
@@ -89,12 +85,36 @@ class Wheel(component.Component):
 
     def puppet(self):
         """Implement rig method"""
+        self.guide_grp.v.set(0)
         self.ctrl_rotation = control.Control(self, self.guide_rotation, 0)
-        self.ctrl_bank_in = control.Control(self, self.guide_bank_in, 1)
-        self.ctrl_bank_out = control.Control(self, self.guide_bank_out, 1)
+        self.ctrl_bank_in = control.Control(self, self.guide_bank_in, 1, 1)
+        self.ctrl_bank_out = control.Control(self, self.guide_bank_out, 1, 1)
         self.ctrl_rod_in = control.Control(self, self.guide_rod_in, 0)
         self.ctrl_rod_out = control.Control(self, self.guide_rod_out, 0)
-        self.guide_grp.v.set(0)
+
+        self.setup_bank()
+        self.plug()
+
+    def setup_bank(self):
+        """Using the existing bank controls create an attribute driven setup"""
+        if not pm.objExists('%s.bankInOut' % self.ctrl_rotation):
+            self.ctrl_rotation.srt.addAttr('bankInOut', at='float', dv=0, k=True,
+                                       min=-25.0, max=25.0)
+        cnd_in = pm.createNode('condition', n='%s_bankIn_dg' % self.name)
+        cnd_out = pm.createNode('condition', n='%s_bankOut_dg' % self.name)
+        self.ctrl_rotation.srt.bankInOut.connect(cnd_in.firstTerm)
+        self.ctrl_rotation.srt.bankInOut.connect(cnd_in.colorIfTrueR)
+        cnd_in.outColorR.connect(self.ctrl_bank_in.buffers[0].rz)
+        cnd_in.operation.set(2)
+        self.ctrl_rotation.srt.bankInOut.connect(cnd_out.firstTerm)
+        self.ctrl_rotation.srt.bankInOut.connect(cnd_out.colorIfTrueR)
+        cnd_out.outColorR.connect(self.ctrl_bank_out.buffers[0].rz)
+        cnd_out.operation.set(4)
+
+    def plug(self):
+        """Setup the plug and socket connection"""
+        self.ctrl_rotation.hrc.setParent(self.ctrl_bank_in.srt)
+        self.ctrl_bank_in.hrc.setParent(self.ctrl_bank_out.srt)
 
     def deform(self):
         """Implement deform method"""

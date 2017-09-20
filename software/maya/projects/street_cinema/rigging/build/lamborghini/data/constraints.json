@@ -1,0 +1,46 @@
+{
+    "base_grp": [
+        "chassy_C_mid_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "exterior_grp": [
+        "chassy_C_mid_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "geo|interior_grp": [
+        "chassy_C_mid_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "suspension_grp_FL": [
+        "chassy_C_rear_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "suspension_grp_FR": [
+        "chassy_C_rear_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "suspension_grp_RL": [
+        "chassy_C_rear_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "suspension_grp_RR": [
+        "chassy_C_rear_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "tire_grp_FL": [
+        "wheel_L_front_rotation_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "tire_grp_FR": [
+        "wheel_R_front_rotation_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "tire_grp_RL": [
+        "wheel_L_rear_rotation_ctrl_srt", 
+        "parentConstraint"
+    ], 
+    "tire_grp_RR": [
+        "wheel_R_rear_rotation_ctrl_srt", 
+        "parentConstraint"
+    ]
+}

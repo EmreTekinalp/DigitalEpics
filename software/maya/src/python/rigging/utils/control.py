@@ -25,7 +25,7 @@ import pymel.core as pm
 class Control(object):
     """Rig control objects based on nurbsCurves"""
 
-    def __init__(self, component=None, guide=None, shape=0, name=None, offset=0):
+    def __init__(self, component=None, guide=None, shape=0, offset=0, name=None):
         """Initialize Control class
 
         :param component: Component object if accessible
@@ -37,19 +37,19 @@ class Control(object):
         :param shape: Each number represents a specific shape
         :type shape: int
 
-        :param name: additional name if no guide is given
-        :type name: str
-
         :param offset: amount of buffer nodes
         :type offset: int
+
+        :param name: additional name if no guide is given
+        :type name: str
         """
 
         # private args
         self._component = component
         self._guide = guide
         self._shape = shape
-        self._name = name
         self._offset = offset
+        self._name = name
 
         # vars
         self.hrc = None
@@ -88,26 +88,26 @@ class Control(object):
     def _set_default_colors(self):
         """Set default control colors, left=blue, right=red, center=yellow"""
         self.srt.getShape().overrideEnabled.set(1)
-        if '_C_' in self.srt:
+        if '_C_' in str(self.srt):
             self.srt.getShape().overrideColor.set(17)
-        elif '_L_' in self.srt:
+        elif '_L_' in str(self.srt):
             self.srt.getShape().overrideColor.set(6)
-        elif '_R_' in self.srt:
+        elif '_R_' in str(self.srt):
             self.srt.getShape().overrideColor.set(13)
 
     def circle(self):
         """Create a nurbsCurve circle"""
         if self._guide:
-            self.srt = pm.circle(n=self._guide.replace('guide', 'ctrl'))[0]
+            self.srt = pm.circle(n=self._guide.replace('guide', 'ctrl'), nr=[1, 0, 0])[0]
         else:
-            self.srt = pm.circle(n='%s_ctrl_srt' % self._component.name)[0]
+            self.srt = pm.circle(n='%s_ctrl_srt' % self._component.name, nr=[1, 0, 0])[0]
         if self.buffers:
             self.srt.setParent(self.buffers[-1])
         else:
             self.srt.setParent(self.hrc)
         if self._guide:
-            self.hrc.t.set(pm.xform(self._guide, q=True, t=True, ws=True))
-            self.hrc.r.set(pm.xform(self._guide, q=True, ro=True, ws=True))
+            pac = pm.parentConstraint(self._guide, self.hrc, mo=False)
+            pm.delete(pac)
         self._set_default_colors()
 
     def square(self):
@@ -122,6 +122,6 @@ class Control(object):
         else:
             self.srt.setParent(self.hrc)
         if self._guide:
-            self.hrc.t.set(pm.xform(self._guide, q=True, t=True, ws=True))
-            self.hrc.r.set(pm.xform(self._guide, q=True, ro=True, ws=True))
+            pm.xform(self.hrc, t=pm.xform(self._guide, q=True, t=True, ws=True))
+            pm.xform(self.hrc, ro=pm.xform(self._guide, q=True, ro=True, ws=True))
         self._set_default_colors()

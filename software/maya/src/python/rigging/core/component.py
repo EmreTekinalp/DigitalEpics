@@ -82,3 +82,17 @@ class Component(object):
     @abstractmethod
     def deform(self):
         """deform method which needs to be implemented for subclasses"""
+
+    def socket(self, plug, mode='parentConstraint'):
+        """given a transform node, constraint to this objects comp_grp
+        
+        :param mode: define which constraint type is desired
+        :type mode: str
+        """
+        if mode == 'parentConstraint':
+            pm.parentConstraint(plug, self.comp_grp, mo=True)
+        elif mode == 'pointConstraint':
+            pm.pointConstraint(plug, self.comp_grp, mo=True)
+        elif mode == 'orientConstraint':
+            pm.orientConstraint(plug, self.comp_grp, mo=True)
+        pm.scaleConstraint(plug, self.comp_grp, mo=True)

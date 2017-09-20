@@ -24,21 +24,18 @@ from maya import cmds
 import pymel.core as pm
 
 # third party modules
-from tool.components import component
+from rigging.core import component
+from rigging.utils import control
 reload(component)
-from utility import control
+reload(control)
 
 
-class Atom(component.Component):
+class Basic(component.Component):
     """Simple atom component"""
 
     def __init__(self, mod, side, description):
-        """Initialize Atom class component subclassing from Base Component"""
-        super(Atom, self).__init__(mod, side, description)
-
-        # vars
-        self.guide_srt = None
-        self.control_srt = None
+        """Initialize Basic class component subclassing from Base Component"""
+        super(Basic, self).__init__(mod, side, description)
 
     def guide(self):
         """Implement guide method"""
@@ -47,9 +44,8 @@ class Atom(component.Component):
 
     def puppet(self):
         """Implement rig method"""
-        self.ctrl = control.Control(self)
-        pm.xform(self.ctrl.hrc, t=self.guide_srt.t, ws=True)
-        pm.xform(self.ctrl.hrc, r=self.guide_srt.r, ws=True)
+        self.ctrl = control.Control(self, self.guide_srt, 1)
+        self.guide_grp.v.set(0)
 
     def deform(self):
         """Implement deform method"""

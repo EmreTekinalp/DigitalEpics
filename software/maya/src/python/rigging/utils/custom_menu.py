@@ -48,13 +48,28 @@ def digital_epics():
     # rigging menu item
     pm.menuItem(d=True, dl='Rigging')
     pm.menuItem(label='save guides', parent=custom_menu,
-                command="from utility import menu_commands;"
+                command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.save_guides();")
     pm.menuItem(label='load guides', parent=custom_menu,
                 command="print 'load guides'")
     pm.menuItem(label='mirror guides', parent=custom_menu,
-                command="from utility import menu_commands;"
+                command="from rigging.utils import menu_commands;"
                         "reload(menu_commands);menu_commands.mirror_guides();")
+    pm.menuItem(label='save control shapes', parent=custom_menu,
+                command="from rigging.utils import menu_commands;"
+                        "reload(menu_commands);menu_commands.save_control_shapes();")
+    pm.menuItem(label='load control shapes', parent=custom_menu,
+                command="from rigging.utils import menu_commands;"
+                        "reload(menu_commands);menu_commands.load_control_shapes();")
+    pm.menuItem(label='mirror control shapes', parent=custom_menu,
+                command="from rigging.utils import menu_commands;"
+                        "reload(menu_commands);menu_commands.mirror_control_shapes();")
+    pm.menuItem(label='save constraints', parent=custom_menu,
+                command="from rigging.utils import menu_commands;"
+                        "reload(menu_commands);menu_commands.save_constraints();")
+    pm.menuItem(label='load constraints', parent=custom_menu,
+                command="from rigging.utils import menu_commands;"
+                        "reload(menu_commands);menu_commands.load_constraints();")
 
     # animation menu item
     pm.menuItem(d=True, dl='Animation')
