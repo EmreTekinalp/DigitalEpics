@@ -26,9 +26,10 @@ from maya import cmds
 
 # third party modules
 from rigging.utils import menu_commands
-from rigging.component import basic, wheel
+from rigging.component import basic, chain, wheel
 from rigging.core import interface
 reload(basic)
+reload(chain)
 reload(interface)
 reload(menu_commands)
 reload(wheel)
@@ -39,7 +40,8 @@ class Lamborghini(interface.RigInterface):
 
     def __init__(self):
         """Initialize Transformer build file"""
-        super(Lamborghini, self).__init__(inspect.getsourcefile(lambda: 0))
+        super(Lamborghini, self).__init__(inspect.getsourcefile(lambda: 0),
+                                          'street_cinema_intro')
 
     def register(self):
         """Register components"""
@@ -57,6 +59,11 @@ class Lamborghini(interface.RigInterface):
         self.wheel_lr = wheel.Wheel('wheel', 'L', 'rear')
         self.wheel_rr = wheel.Wheel('wheel', 'R', 'rear')
 
+        self.rod_lf = chain.Chain('rod', 'L', 'front')
+        self.rod_rf = chain.Chain('rod', 'R', 'front')
+        self.rod_lr = chain.Chain('rod', 'L', 'rear')
+        self.rod_rr = chain.Chain('rod', 'R', 'rear')
+
     def guide(self):
         """Create the guides for the asset"""
         self.god.guide()
@@ -72,6 +79,11 @@ class Lamborghini(interface.RigInterface):
         self.wheel_rf.guide()
         self.wheel_lr.guide()
         self.wheel_rr.guide()
+
+        self.rod_lf.guide()
+        self.rod_rf.guide()
+        self.rod_lr.guide()
+        self.rod_rr.guide()
 
     def puppet(self):
         """Puppet method"""
@@ -89,6 +101,11 @@ class Lamborghini(interface.RigInterface):
         self.wheel_lr.puppet()
         self.wheel_rr.puppet()
 
+        self.rod_lf.puppet()
+        self.rod_rf.puppet()
+        self.rod_lr.puppet()
+        self.rod_rr.puppet()
+
         self.plug()
 
     def plug(self):
@@ -103,10 +120,10 @@ class Lamborghini(interface.RigInterface):
         self.wheel_rf.socket(self.chassy_rear.ctrl.srt)
         self.wheel_lr.socket(self.chassy_rear.ctrl.srt)
         self.wheel_rr.socket(self.chassy_rear.ctrl.srt)
+        self.rod_lf.socket(self.chassy_rear.ctrl.srt)
+        self.rod_rf.socket(self.chassy_rear.ctrl.srt)
+        self.rod_lr.socket(self.chassy_rear.ctrl.srt)
+        self.rod_rr.socket(self.chassy_rear.ctrl.srt)
 
 asset = Lamborghini()
 asset.run(interface.FINAL)
-
-
-from projects.street_cinema.rigging.build.lamborghini import lamborghini
-reload(lamborghini)

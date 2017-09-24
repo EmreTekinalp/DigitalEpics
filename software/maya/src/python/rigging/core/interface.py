@@ -9,7 +9,7 @@
 @contact: e.tekinalp@icloud.com
 @package: rigging/core/interface
 @brief: interface for the build file
-@requires: Nothing
+@requires: rigging.core.io; rigging.utils.attribute; rigging.utils.menu_commands
 @version: 1.0.0
 """
 
@@ -21,7 +21,6 @@ __version__ = '1.0'
 
 # python
 from abc import abstractmethod
-import inspect
 import os
 
 # maya
@@ -29,9 +28,11 @@ from maya import cmds
 import pymel.core as pm
 
 # third party modules
+from rigging.core import io
 from rigging.utils import attribute
 from rigging.utils import menu_commands
 reload(attribute)
+reload(io)
 reload(menu_commands)
 
 # CONSTANTS
@@ -45,10 +46,12 @@ FINAL = 9
 class RigInterface(object):
     """Base interface for all the rigging build file subclasses"""
 
-    def __init__(self, current_file=None):
+    def __init__(self, current_file=None, project=None):
         """Initialize RigInterface class"""
         self.current_file = current_file
         self.asset_name = os.path.basename(self.current_file).split('.')[0]
+        # tmp solution for now
+        self.project = project
 
     def run(self, stage=0):
         """build function to construct the rig setup"""
@@ -74,21 +77,16 @@ class RigInterface(object):
 
     def load_asset(self):
         """Load the latest model version of the asset into a new scene file"""
-        project_path = cmds.workspace(q=True, fn=True)
-        current_file = os.path.abspath(self.current_file)
-        scene_path = os.path.abspath(os.path.join(project_path, 'scenes', 'street_cinema_intro'))
-        asset_name = os.path.splitext(os.path.basename(current_file))[0]
-        asset_path = os.path.abspath(os.path.join(scene_path, asset_name))
-        model_path = os.path.abspath(os.path.join(asset_path, 'modeling'))
+        workspace_path = cmds.workspace(q=True, fn=True)
+        project_path = io.join_path(workspace_path, 'scenes', self.project)
+        model_path = io.join_path(project_path, self.asset_name, 'modeling')
         latest_version = ''
         for f in os.listdir(model_path):
-            if f.startswith(asset_name):
-                latest_version = os.path.abspath(os.path.join(model_path, f))
+            latest_version = io.join_path(model_path, f)
         if not latest_version:
-            raise ImportError('Could not find model version -> %s' % asset_name)
+            raise ImportError('Could not find any scenes under %s' % model_path)
         cmds.file(new=True, f=True)
         cmds.file(latest_version, i=True, f=True)
-        self.asset_name = asset_name
         # create a geo display attribute
         if not cmds.objExists('%s.geoDisplay' % self.asset_name):
             cmds.addAttr(self.asset_name, ln='geoDisplay', at='enum', dv=2,
@@ -104,7 +102,7 @@ class RigInterface(object):
             cmds.warning('RigInterface: Model scene is missing!')
             return
         top_grp = top_grp[0].getParent(-1)
-        data = os.path.abspath(os.path.join(os.path.abspath(self.current_file),
+        data = os.path.abspath(os.path.join(self.current_file,
                                             os.path.pardir, 'data'))
         if not pm.objExists('%s.data_path' % top_grp):
             top_grp.addAttr('data_path', dt='string')
@@ -137,7 +135,6 @@ class RigInterface(object):
     @abstractmethod
     def extras(self):
         """Implement function to deal with extra functions for the rig setup"""
-        menu_commands.load_constraints()
 
     def finalize(self):
         """prepare the rig to be ready for a publish"""

@@ -9,7 +9,7 @@
 @contact: e.tekinalp@icloud.com
 @package: utils/menu_command
 @brief: include menu commands to call
-@requires: Nothing
+@requires: rigging.core.io
 @version: 1.0.0
 """
 
@@ -26,6 +26,10 @@ import sys
 # maya
 from maya import cmds
 import pymel.core as pm
+
+# third party modules
+from rigging.core import io
+reload(io)
 
 
 def scene_path():
@@ -50,8 +54,12 @@ def data_path():
 
 def save_guides():
     """Save the guide locators"""
-    gd = [i for g in cmds.ls('guide')
-          for i in cmds.listRelatives(g, ad=True, type='transform')]
+    gd = list()
+    for g in cmds.ls('guide'):
+        if g:
+            for i in cmds.listRelatives(g, ad=True, type='transform'):
+                if i:
+                    gd.append(i)
     if not gd:
         cmds.warning('Saving Guides: No guides in the scene!')
         return
@@ -68,12 +76,11 @@ def save_guides():
 def load_guides(path=None):
     """Load the guide locators"""
     if not path:
-        path = os.path.abspath(os.path.join(data_path(), 'guides.json'))
+        path = io.join_path(data_path(), 'guides.json')
     with open(path) as json_file:
         data = json.load(json_file)
     for key, value in data.items():
         if not cmds.objExists(key):
-            cmds.warning('Loading Guides: %s does not exist! Skip...' % key)
             continue
         cmds.xform(key, t=value[0], ws=False)
         cmds.xform(key, ro=value[1], ws=False)
@@ -125,7 +132,6 @@ def load_control_shapes(path=None):
     for d in data.values():
         for key, value in d.items():
             if not cmds.objExists(key):
-                cmds.warning('Loading Guides: %s does not exist! Skip...' % key)
                 continue
             cmds.xform(key, t=value, ws=True)
     print 'Loaded control shapes from: %s' % path
@@ -151,10 +157,11 @@ def mirror_control_shapes():
 
 def save_constraints():
     """Save all the constraints"""
-    data = dict()
+    data = list()
     for i in pm.listRelatives('geo', ad=True, type='constraint'):
         nodes = list(set(k for k in i.listConnections()))
-        data[str(nodes[0])] = [str(nodes[1]), nodes[-1].type()]
+        constraint = [n for n in nodes if not n.type() == 'transform']
+        data.append([str(nodes[1]), str(nodes[0]), str(nodes[-1].type())])
     path = os.path.abspath(os.path.join(data_path(), 'constraints.json'))
     with open(path, 'w') as outfile:
         json.dump(data, outfile, indent=4, sort_keys=True)
@@ -167,17 +174,17 @@ def load_constraints(path=None):
         path = os.path.abspath(os.path.join(data_path(), 'constraints.json'))
     with open(path) as json_file:
         data = json.load(json_file)
-    for key, value in data.items():
-        if not cmds.objExists(key):
-            cmds.warning('Loading Constraints: %s does not exist! Skip...' % key)
+    for d in data:
+        if not cmds.objExists(d[0]) or not cmds.objExists(d[1]):
             continue
-        if value[1] == 'parentConstraint':
-            cmds.parentConstraint(value[0], key, mo=True)
-        elif value[1] == 'pointConstraint':
-            cmds.pointConstraint(value[0], key, mo=True)
-        elif value[1] == 'orientConstraint':
-            cmds.orientConstraint(value[0], key, mo=True)
-        cmds.scaleConstraint(value[0], key, mo=True)
+        if d[-1] == 'parentConstraint':
+            cmds.parentConstraint(d[0], d[1], mo=True)
+        elif d[-1] == 'pointConstraint':
+            cmds.pointConstraint(d[0], d[1], mo=True)
+        elif d[-1] == 'orientConstraint':
+            cmds.orientConstraint(d[0], d[1], mo=True)
+        elif d[-1] == 'scaleConstraint':
+            cmds.scaleConstraint(d[0], d[1], mo=True)
     print 'Loaded constraints from: %s' % path
 
 

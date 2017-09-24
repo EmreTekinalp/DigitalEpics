@@ -16,11 +16,11 @@
 #
 #
 
+from maya import cmds
+from maya import mel
+
 
 def rsCameraUIBuild():
-    import maya.cmds as cmds
-    import maya.mel as mel
-
     if cmds.window("rsCameraUI", q=True, ex=True):
         cmds.deleteUI("rsCameraUI", window=True)
 
@@ -54,19 +54,17 @@ def rsCameraUIBuild():
             cmds.menuItem(label=tempTrans[0])
 
     cmds.optionMenu(cOpt, e=1, cc=(
-    'import maya.cmds as cmds; rsCameraUI.rsCameraUIFill((cmds.optionMenu("' + cOpt + '",q=1,v=1)), "' + rsm1 + '","' + rsm2 + '","' + rsm3 + '","' + rsm4 + '","' + rsm5 + '","' + rsm6 + '","' + rsCamUIMainColumn + '")'))
+    'from maya import cmds; rsCameraUI.rsCameraUIFill((cmds.optionMenu("' + cOpt + '",q=1,v=1)), "' + rsm1 + '","' + rsm2 + '","' + rsm3 + '","' + rsm4 + '","' + rsm5 + '","' + rsm6 + '","' + rsCamUIMainColumn + '")'))
     cmds.setParent("..")
     cmds.separator(style="none", h=10)
     cmds.showWindow("rsCameraUI")
     cmds.window("rsCameraUI", e=1, wh=[235, 305])
-    # cmds.menuItem(tempMenuItem,e=1, c=('import maya.cmds as cmds; print ("'+ cOpt +'",(cmds.optionMenu("'+cOpt+'",q=1,v=1)), "' + rsm1 + '","' +rsm2 + '","' +rsm3 + '","' + rsm4 + '","' +rsm5 +'","' +rsm6 +'","' + rsCamUIMainColumn +'")'))
+    # cmds.menuItem(tempMenuItem,e=1, c=('from maya import cmds; print ("'+ cOpt +'",(cmds.optionMenu("'+cOpt+'",q=1,v=1)), "' + rsm1 + '","' +rsm2 + '","' +rsm3 + '","' + rsm4 + '","' +rsm5 +'","' +rsm6 +'","' + rsCamUIMainColumn +'")'))
     cmds.menuItem(tempMenuItem, e=1, c=(
-    'import maya.cmds as cmds; rsCameraUI.rsCameraUIShakeStart("' + cOpt + '",(cmds.optionMenu("' + cOpt + '",q=1,v=1)), "' + rsm1 + '","' + rsm2 + '","' + rsm3 + '","' + rsm4 + '","' + rsm5 + '","' + rsm6 + '","' + rsCamUIMainColumn + '")'))
+    'from maya import cmds; rsCameraUI.rsCameraUIShakeStart("' + cOpt + '",(cmds.optionMenu("' + cOpt + '",q=1,v=1)), "' + rsm1 + '","' + rsm2 + '","' + rsm3 + '","' + rsm4 + '","' + rsm5 + '","' + rsm6 + '","' + rsCamUIMainColumn + '")'))
 
 
 def rsCameraUIShowWindow(rsm6, camT, rsCamUIMainColumn):
-    import maya.cmds as cmds
-
     tempTrial = cmds.about(v=True)
     if len(tempTrial) < 4:
         tempTrial = tempTrial + "____"
@@ -106,7 +104,6 @@ def rsCameraUIShowWindow(rsm6, camT, rsCamUIMainColumn):
 
 def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
                    rsCamUIMainColumn):
-    import maya.cmds as cmds
 
     cmds.setParent(rsCamUIMainColumn)
 
@@ -139,22 +136,22 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
                   en=True)
 
     cmds.menuItem(rsm1, e=1, c=(
-    'import maya.cmds as cmds;cmds.setAttr("' + camShape[
+    'from maya import cmds;cmds.setAttr("' + camShape[
         0] + '.displayFilmGate", cmds.menuItem("' + rsm1 + '", q=1,checkBox=1))'))
     cmds.menuItem(rsm2, e=1, c=(
-    'import maya.cmds as cmds;cmds.setAttr("' + camShape[
+    'from maya import cmds;cmds.setAttr("' + camShape[
         0] + '.displayResolution", cmds.menuItem("' + rsm2 + '", q=1,checkBox=1))'))
     cmds.menuItem(rsm3, e=1, c=(
-    'import maya.cmds as cmds;cmds.setAttr("' + camShape[
+    'from maya import cmds;cmds.setAttr("' + camShape[
         0] + '.displayFieldChart", cmds.menuItem("' + rsm3 + '", q=1,checkBox=1))'))
     cmds.menuItem(rsm4, e=1, c=(
-    'import maya.cmds as cmds;cmds.setAttr("' + camShape[
+    'from maya import cmds;cmds.setAttr("' + camShape[
         0] + '.displaySafeAction", cmds.menuItem("' + rsm4 + '", q=1,checkBox=1))'))
     cmds.menuItem(rsm5, e=1, c=(
-    'import maya.cmds as cmds;cmds.setAttr("' + camShape[
+    'from maya import cmds;cmds.setAttr("' + camShape[
         0] + '.displaySafeTitle", cmds.menuItem("' + rsm5 + '", q=1,checkBox=1))'))
     cmds.menuItem(rsm6, e=1, c=(
-    'import maya.cmds as cmds; rsCameraUI.rsCameraUIShowWindow("' + rsm6 + '","' +
+    'from maya import cmds; rsCameraUI.rsCameraUIShowWindow("' + rsm6 + '","' +
     camShape[0] + '","' + rsCamUIMainColumn + '")'))
 
     if cmds.control('rsCameraReplaceColumn', query=True, exists=True):
@@ -166,8 +163,8 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     ##### TRANSLATE
     ##
     # cmds.text(fn="boldLabelFont",l="TRANSLATE")
-    tempEC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+116));'
-    tempCC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-116));'
+    tempEC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+116));'
+    tempCC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-116));'
     # cmds.frameLayout(li=50, fn='boldLabelFont', l='TRANSLATE', la='center',bv=False,bs='etchedOut',ec='cmds.window("rsCameraUI",e=1,h=706)', cc='cmds.window("rsCameraUI",e=1,h=620)', cl=1, cll=1,)
     cmds.frameLayout(li=50, fn='boldLabelFont', l='TRANSLATE', la='center',
                      bv=False, bs='etchedOut', ec=tempEC, cc=tempCC, cl=1,
@@ -215,8 +212,8 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     ##### ROTATE
     ##
     cmds.separator(style="double", h=20)
-    tempEC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+142));'
-    tempCC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-142));'
+    tempEC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+142));'
+    tempCC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-142));'
     cmds.frameLayout(li=61, fn='boldLabelFont', l='ROTATE', la='center',
                      bv=False, bs='etchedOut', ec=tempEC, cc=tempCC, cl=1,
                      cll=1, )
@@ -267,8 +264,8 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     ##
     if cmds.objExists(camTrans + "_ShakeControl"):
         cmds.window("rsCameraUI", e=1, h=355)
-        tempEC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+395));'
-        tempCC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-395));'
+        tempEC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+395));'
+        tempCC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-395));'
         cmds.separator(style="double", h=20)
         cmds.frameLayout(li=60, fn='boldLabelFont', l='SHAKE', la='center',
                          bv=False, bs='etchedOut', ec=tempEC, cc=tempCC, cl=1,
@@ -327,8 +324,8 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     ##
     ##### CAMERA
     ##
-    tempEC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+150));'
-    tempCC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-150));'
+    tempEC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+150));'
+    tempCC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-150));'
     cmds.separator(style="double", h=20)
     cmds.frameLayout(li=60, fn='boldLabelFont', l='CAMERA', la='center',
                      bv=False, bs='etchedOut', ec=tempEC, cc=tempCC, cl=1,
@@ -385,8 +382,8 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     ##
     ##### SETTINGS
     ##
-    tempEC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+88));'
-    tempCC = 'import maya.cmds as cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-88));'
+    tempEC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x+88));'
+    tempCC = 'from maya import cmds; x=cmds.window("rsCameraUI",q=1,h=1);cmds.window("rsCameraUI",e=1,h=(x-88));'
     cmds.separator(style="none", h=5)
     cmds.frameLayout(li=55, fn='boldLabelFont', l='SETTINGS', la='center',
                      bv=False, bs='etchedOut', ec=tempEC, cc=tempCC, cl=1,
@@ -432,7 +429,7 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     cameSelBut = cmds.button(l="SELECT CAMERA", c='cmds.select(["' + camShape[
         0] + '","' + camTrans + '"])')
 
-    tempCom = 'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '", attribute="translateX");cmds.setKeyframe("' + camTrans + '", attribute="translateY");cmds.setKeyframe("' + camTrans + '", attribute="translateZ");cmds.setKeyframe("' + camTrans + '", attribute="rotateX");cmds.setKeyframe("' + camTrans + '", attribute="rotateY");cmds.setKeyframe("' + camTrans + '", attribute="rotateZ");cmds.setKeyframe("' + \
+    tempCom = 'from maya import cmds; cmds.setKeyframe("' + camTrans + '", attribute="translateX");cmds.setKeyframe("' + camTrans + '", attribute="translateY");cmds.setKeyframe("' + camTrans + '", attribute="translateZ");cmds.setKeyframe("' + camTrans + '", attribute="rotateX");cmds.setKeyframe("' + camTrans + '", attribute="rotateY");cmds.setKeyframe("' + camTrans + '", attribute="rotateZ");cmds.setKeyframe("' + \
               camShape[0] + '", attribute="focalLength");'
 
     cameKeyBut = cmds.button(l="Keyframe CAMERA", c=tempCom)
@@ -441,97 +438,97 @@ def rsCameraUIFill(camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
     cmds.separator(style="none", h=5)
 
     cmds.button(tXSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") - tempFact))'))
     cmds.button(tXSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") - tempFact))'))
     cmds.button(tXKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="translateX")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="translateX")'))
     cmds.button(tXAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") + tempFact))'))
     cmds.button(tXAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateX",(cmds.getAttr("' + camTrans + '.translateX") + tempFact))'))
     cmds.button(tYSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") - tempFact))'))
     cmds.button(tYSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") - tempFact))'))
     cmds.button(tYKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="translateY")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="translateY")'))
     cmds.button(tYAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") + tempFact))'))
     cmds.button(tYAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateY",(cmds.getAttr("' + camTrans + '.translateY") + tempFact))'))
     cmds.button(tZSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") - tempFact))'))
     cmds.button(tZSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") - tempFact))'))
     cmds.button(tZKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="translateZ")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="translateZ")'))
     cmds.button(tZAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") + tempFact))'))
     cmds.button(tZAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + tStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.translateZ",(cmds.getAttr("' + camTrans + '.translateZ") + tempFact))'))
     cmds.button(tKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="translate")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="translate")'))
 
     cmds.button(rXSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
     cmds.button(rXSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
     cmds.button(rXKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateX")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateX")'))
     cmds.button(rXAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
     cmds.button(rXAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
     cmds.button(rYSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
     cmds.button(rYSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
     cmds.button(rYKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateY")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateY")'))
     cmds.button(rYAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
     cmds.button(rYAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
     cmds.button(rZSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
     cmds.button(rZSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
     cmds.button(rZKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateZ")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateZ")'))
     cmds.button(rZAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
     cmds.button(rZAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
+    'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
     cmds.button(rKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
 
     cmds.button(fSubSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + fStepS + '",q=1,v=True); cmds.setAttr("' +
+    'from maya import cmds; tempFact=cmds.floatField("' + fStepS + '",q=1,v=True); cmds.setAttr("' +
     camShape[0] + '.focalLength",(cmds.getAttr("' + camShape[
         0] + '.focalLength") - tempFact))'))
     cmds.button(fSubBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + fStepL + '",q=1,v=True); cmds.setAttr("' +
+    'from maya import cmds; tempFact=cmds.floatField("' + fStepL + '",q=1,v=True); cmds.setAttr("' +
     camShape[0] + '.focalLength",(cmds.getAttr("' + camShape[
         0] + '.focalLength") - tempFact))'))
     cmds.button(fKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateZ")'))
+    'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateZ")'))
     cmds.button(fAddBig, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + fStepL + '",q=1,v=True); cmds.setAttr("' +
+    'from maya import cmds; tempFact=cmds.floatField("' + fStepL + '",q=1,v=True); cmds.setAttr("' +
     camShape[0] + '.focalLength",(cmds.getAttr("' + camShape[
         0] + '.focalLength") + tempFact))'))
     cmds.button(fAddSmall, e=1, c=(
-    'import maya.cmds as cmds; tempFact=cmds.floatField("' + fStepS + '",q=1,v=True); cmds.setAttr("' +
+    'from maya import cmds; tempFact=cmds.floatField("' + fStepS + '",q=1,v=True); cmds.setAttr("' +
     camShape[0] + '.focalLength",(cmds.getAttr("' + camShape[
         0] + '.focalLength") + tempFact))'))
     cmds.button(fKey, e=1, c=(
-    'import maya.cmds as cmds; cmds.setKeyframe("' + camShape[
+    'from maya import cmds; cmds.setKeyframe("' + camShape[
         0] + '" ,at="focalLength")'))
 
     cmds.optionMenu(pOpt, e=1,
                     cc='rsCameraUI.rsCameraUIOpt("' + pOpt + '","' + camShape[
                         0] + '")')
-    tempRadC = 'import maya.cmds as cmds;rsCameraUI.rsCameraRadButC("' + rStepS + '","' + rStepL + '","' + tempRadButGrp + '","' + str(
+    tempRadC = 'from maya import cmds;rsCameraUI.rsCameraRadButC("' + rStepS + '","' + rStepL + '","' + tempRadButGrp + '","' + str(
         camTrans) + '","' + str(rXSubSmall) + '","' + str(
         rXSubBig) + '","' + str(rXKey) + '","' + str(rXAddBig) + '","' + str(
         rXAddSmall) + '","' + str(rYSubSmall) + '","' + str(
@@ -546,75 +543,73 @@ def rsCameraRadButC(rStepS, rStepL, tempRadButGrp, camTrans, rXSubSmall,
                     rXSubBig, rXKey, rXAddBig, rXAddSmall, rYSubSmall, rYSubBig,
                     rYKey, rYAddBig, rYAddSmall, rZSubSmall, rZSubBig, rZKey,
                     rZAddBig, rZAddSmall):
-    import maya.cmds as cmds
-
     tempMode = cmds.radioButtonGrp(tempRadButGrp, q=1, select=1)
 
     if tempMode == 1:
         cmds.button(rXSubSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
         cmds.button(rXSubBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") - tempFact))'))
         cmds.button(rXKey, e=1, l="Key X", c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateX")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateX")'))
         cmds.button(rXAddBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
         cmds.button(rXAddSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateX",(cmds.getAttr("' + camTrans + '.rotateX") + tempFact))'))
         cmds.button(rYSubSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
         cmds.button(rYSubBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") - tempFact))'))
         cmds.button(rYKey, e=1, l="Key Y", c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateY")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateY")'))
         cmds.button(rYAddBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
         cmds.button(rYAddSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateY",(cmds.getAttr("' + camTrans + '.rotateY") + tempFact))'))
         cmds.button(rZSubSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
         cmds.button(rZSubBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") - tempFact))'))
         cmds.button(rZKey, e=1, l="Key Z", c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateZ")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotateZ")'))
         cmds.button(rZAddBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
         cmds.button(rZAddSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.setAttr("' + camTrans + '.rotateZ",(cmds.getAttr("' + camTrans + '.rotateZ") + tempFact))'))
         cmds.button(rZKey, e=1, c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
 
     if tempMode == 2:
         cmds.button(rXSubSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.rotate((tempFact*-1), 0, 0,"' + camTrans + '",r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True); cmds.rotate((tempFact*-1), 0, 0,"' + camTrans + '",r=True, os=True)'))
         cmds.button(rXSubBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate((tempFact*-1), 0, 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate((tempFact*-1), 0, 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rXKey, l='LIFT - Key All', e=1, c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
         cmds.button(rXAddBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(tempFact, 0, 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(tempFact, 0, 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rXAddSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(tempFact, 0, 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(tempFact, 0, 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rYSubSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, (tempFact*-1), 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, (tempFact*-1), 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rYSubBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(0, (tempFact*-1), 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(0, (tempFact*-1), 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rYKey, l='PAN - Key All', e=1, c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
         cmds.button(rYAddBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(0, tempFact, 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(0, tempFact, 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rYAddSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, tempFact, 0,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, tempFact, 0,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rZSubSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, 0, (tempFact*-1),"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, 0, (tempFact*-1),"' + camTrans + '", r=True, os=True)'))
         cmds.button(rZSubBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.rotate(0, 0, (tempFact*-1),"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True); cmds.rotate(0, 0, (tempFact*-1),"' + camTrans + '", r=True, os=True)'))
         cmds.button(rZKey, l='TILT - Key All', e=1, c=(
-        'import maya.cmds as cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
+        'from maya import cmds; cmds.setKeyframe("' + camTrans + '" ,at="rotate")'))
         cmds.button(rZAddBig, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(0, 0, tempFact,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepL + '",q=1,v=True);cmds.rotate(0, 0, tempFact,"' + camTrans + '", r=True, os=True)'))
         cmds.button(rZAddSmall, e=1, c=(
-        'import maya.cmds as cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, 0, tempFact,"' + camTrans + '", r=True, os=True)'))
+        'from maya import cmds; tempFact=cmds.floatField("' + rStepS + '",q=1,v=True);cmds.rotate(0, 0, tempFact,"' + camTrans + '", r=True, os=True)'))
 
 
 # cmds.rotate(tempFact, 0, 0, r=True, os=True)
@@ -628,8 +623,6 @@ def rsCameraRadButC(rStepS, rStepL, tempRadButGrp, camTrans, rXSubSmall,
 
 
 def rsCameraUIOpt(pOpt, camShape):
-    import maya.cmds as cmds
-
     if cmds.optionMenu(pOpt, q=1, v=1) != '-Choose-':
         temp = cmds.optionMenu(pOpt, q=1, v=1)
         temp = int(temp.replace("mm", ""))
@@ -638,8 +631,6 @@ def rsCameraUIOpt(pOpt, camShape):
 
 
 def rsCameraUIHelp():
-    import maya.cmds as cmds
-
     if cmds.window("rsCameraUIHelp", q=1, exists=1) == True:
         cmds.deleteUI("rsCameraUIHelp", window=1)
     cmds.window("rsCameraUIHelp", wh=[300, 300], sizeable=True,
@@ -814,8 +805,6 @@ def rsCameraUIHelp():
 
 def rsCameraUIShakeStart(cOpt, camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
                          rsCamUIMainColumn):
-    import maya.cmds as cmds
-
     if cmds.optionMenu(cOpt, q=True, v=True) == "--Unlink Camera--":
         return
     if cmds.objExists(camTrans + "_ShakeControl") == True:
@@ -828,8 +817,6 @@ def rsCameraUIShakeStart(cOpt, camTrans, rsm1, rsm2, rsm3, rsm4, rsm5, rsm6,
 
 
 def rsCameraUIShakeRemove(currentCamera):
-    import maya.cmds as cmds
-
     if cmds.objExists(currentCamera + "_ShakeControl") == False:
         cmds.confirmDialog(title='No Shaker',
                            message='There is no camera shake!!\n\n',
@@ -917,8 +904,6 @@ def rsCameraUIShakeRemove(currentCamera):
 
 
 def rsCameraUIKeyShakePreset(shakeOpt, currentCamera):
-    import maya.cmds as cmds
-
     tsp = cmds.optionMenu(shakeOpt, q=1, v=1)
     tempChannels = ["seed", "offset", "frequencyTransX", "frequencyTransY",
                     "amplitudeTransX", "amplitudeTransY", "frequencyRotX",
@@ -954,8 +939,6 @@ def rsCameraUIKeyShakePreset(shakeOpt, currentCamera):
 
 
 def rsCameraUIKeyShake(currentCamera):
-    import maya.cmds as cmds
-
     tempChanList = ["frequencyRotX", "frequencyRotY", "frequencyRotZ",
                     "frequencyTransY", "amplitudeTransY", "frequencyTransX",
                     "amplitudeTransX", "seed", "offset", "amplitudeRotX",
@@ -967,9 +950,6 @@ def rsCameraUIKeyShake(currentCamera):
 
 
 def rsCameraUIShakeReAdd(currentCamera):
-    import maya.cmds as cmds
-    import maya.mel as mel
-
     tempChanList = ["frequencyRot", "frequencyTransY", "amplitudeTransY",
                     "frequencyTransX", "amplitudeTransX", "seedTrans",
                     "amplitudeRot", "seedRot", "magnitude"]
@@ -1000,8 +980,6 @@ def rsCameraUIShakeReAdd(currentCamera):
 
 
 def rsCameraUIShakeAdd(currentCamera):
-    import maya.cmds as cmds
-    import maya.mel as mel
 
     if cmds.objExists(currentCamera + "_ShakeControl") == True:
         cmds.confirmDialog(title='Naming Conflict',
@@ -1128,8 +1106,8 @@ def rsCameraUIShakeAdd(currentCamera):
                  max=100000, dv=0)
     cmds.setAttr((currentCameraCon + ".amplitudeRotZ"), e=True, keyable=True)
     # print ('expression -s ("float $ampRX = ' + currentCameraCon + '.amplitudeRotX;\\nfloat $ampRY = ' + currentCameraCon + '.amplitudeRotY;\\nfloat $ampRZ = ' + currentCameraCon + '.amplitudeRotZ;\\nfloat $ampX = ' + currentCameraCon + '.amplitudeTransX;\\nfloat $ampY = ' + currentCameraCon + '.amplitudeTransY;\\nfloat $seed = ' + currentCameraCon + '.seed;\\nfloat $freqTX = ' + currentCameraCon + '.frequencyTransX;\\nfloat $freqTY = ' + currentCameraCon + '.frequencyTransY;\\nfloat $ampOffset = ' + currentCameraCon + '.offset/100;\\nfloat $freqRX = ' + currentCameraCon + '.frequencyRotX;\\nfloat $freqRY = ' + currentCameraCon + '.frequencyRotY;\\nfloat $freqRZ = ' + currentCameraCon + '.frequencyRotZ;\\n// compute input value for noise function\\nfloat $noiseTransX = (frame * ($freqTX * .1) + ($seed +3));\\nfloat $noiseTransY = (frame * ($freqTY * .1) + ($seed +4));\\nfloat $noiseRotX = (frame * ($freqRX * .05) + ($seed+1));\\nfloat $noiseRotY = (frame * ($freqRY * .05) + ($seed+2));\\nfloat $noiseRotZ = (frame * ($freqRZ * .05) + ($seed+5));\\n// noise amplitudeX\\n$ampX = $ampX + (noise($noiseTransX) * $ampOffset);\\n$ampY = $ampY + (noise($noiseTransY) * $ampOffset);\\n$ampRX = $ampRX + (noise($noiseRotX) * $ampOffset)/10;\\n$ampRY = $ampRY + (noise($noiseRotY) * $ampOffset)/10;\\n$ampRZ = $ampRZ + (noise($noiseRotZ) * $ampOffset);\\n// Translations\\n// transX is sin wave * amplitude\\nfloat $sin_input_frequency = noise($noiseTransX) * .05 * 3.14;\\nfloat $cameraShakeTransX = sin($sin_input_frequency) * $ampX;\\n$sin_input_frequency = noise($noiseTransY) * .05 * 3.14;\\nfloat $cameraShakeTransY = sin($sin_input_frequency) * $ampY;\\n//Rotations\\n$sin_input_frequency = noise($noiseRotX) * .1 * 3.14;\\nfloat $cameraShakeRotX = sin($sin_input_frequency) * $ampRX;\\n$sin_input_frequency = noise($noiseRotY) * .1 * 3.14;\\nfloat $cameraShakeRotY = sin($sin_input_frequency) * $ampRY;\\n$sin_input_frequency = noise($noiseRotZ) * .1 * 3.14;\\nfloat $cameraShakeRotZ = sin($sin_input_frequency) * $ampRZ;\\n'+shake + 'translateX = $cameraShakeTransX;\\n'+shake + 'translateY = $cameraShakeTransY;\\n'+shake + 'rotateX = $cameraShakeRotX;\\n'+shake + '.rotateZ = $cameraShakeRotZ;\\n'+ shake+'.rotateY = $cameraShakeRotY;\\n") -o ' + currentCameraCon + ' -ae 1 -uc all;')
-    mel.eval(
-        'expression -s ("float $ampRX = ' + currentCameraCon + '.amplitudeRotX;\\nfloat $ampRY = ' + currentCameraCon + '.amplitudeRotY;\\nfloat $ampRZ = ' + currentCameraCon + '.amplitudeRotZ;\\nfloat $ampX = ' + currentCameraCon + '.amplitudeTransX;\\nfloat $ampY = ' + currentCameraCon + '.amplitudeTransY;\\nfloat $seed = ' + currentCameraCon + '.seed;\\nfloat $freqTX = ' + currentCameraCon + '.frequencyTransX;\\nfloat $freqTY = ' + currentCameraCon + '.frequencyTransY;\\nfloat $ampOffset = ' + currentCameraCon + '.offset/100;\\nfloat $freqRX = ' + currentCameraCon + '.frequencyRotX;\\nfloat $freqRY = ' + currentCameraCon + '.frequencyRotY;\\nfloat $freqRZ = ' + currentCameraCon + '.frequencyRotZ;\\n// compute input value for noise function\\nfloat $noiseTransX = (frame * ($freqTX * .1) + ($seed +3));\\nfloat $noiseTransY = (frame * ($freqTY * .1) + ($seed +4));\\nfloat $noiseRotX = (frame * ($freqRX * .05) + ($seed+1));\\nfloat $noiseRotY = (frame * ($freqRY * .05) + ($seed+2));\\nfloat $noiseRotZ = (frame * ($freqRZ * .05) + ($seed+5));\\n// noise amplitudeX\\n$ampX = $ampX + (noise($noiseTransX) * $ampOffset);\\n$ampY = $ampY + (noise($noiseTransY) * $ampOffset);\\n$ampRX = $ampRX + (noise($noiseRotX) * $ampOffset)/10;\\n$ampRY = $ampRY + (noise($noiseRotY) * $ampOffset)/10;\\n$ampRZ = $ampRZ + (noise($noiseRotZ) * $ampOffset);\\n// Translations\\n// transX is sin wave * amplitude\\nfloat $sin_input_frequency = noise($noiseTransX) * .05 * 3.14;\\nfloat $cameraShakeTransX = sin($sin_input_frequency) * $ampX;\\n$sin_input_frequency = noise($noiseTransY) * .05 * 3.14;\\nfloat $cameraShakeTransY = sin($sin_input_frequency) * $ampY;\\n//Rotations\\n$sin_input_frequency = noise($noiseRotX) * .1 * 3.14;\\nfloat $cameraShakeRotX = sin($sin_input_frequency) * $ampRX;\\n$sin_input_frequency = noise($noiseRotY) * .1 * 3.14;\\nfloat $cameraShakeRotY = sin($sin_input_frequency) * $ampRY;\\n$sin_input_frequency = noise($noiseRotZ) * .1 * 3.14;\\nfloat $cameraShakeRotZ = sin($sin_input_frequency) * $ampRZ;\\n' + shake + '.translateX = $cameraShakeTransX;\\n' + shake + '.translateY = $cameraShakeTransY;\\n' + shake + '.rotateX = $cameraShakeRotX;\\n' + shake + '.rotateZ = $cameraShakeRotZ;\\n' + shake + '.rotateY = $cameraShakeRotY;\\n") -o ' + currentCameraCon + ' -ae 1 -uc all;')
+    mel.eval('expression -s ("float $ampRX = ' + currentCameraCon + '.amplitudeRotX;\\nfloat $ampRY = ' + currentCameraCon + '.amplitudeRotY;\\nfloat $ampRZ = ' + currentCameraCon + '.amplitudeRotZ;\\nfloat $ampX = ' + currentCameraCon + '.amplitudeTransX;\\nfloat $ampY = ' + currentCameraCon + '.amplitudeTransY;\\nfloat $seed = ' + currentCameraCon + '.seed;\\nfloat $freqTX = ' + currentCameraCon + '.frequencyTransX;\\nfloat $freqTY = ' + currentCameraCon + '.frequencyTransY;\\nfloat $ampOffset = ' + currentCameraCon + '.offset/100;\\nfloat $freqRX = ' + currentCameraCon + '.frequencyRotX;\\nfloat $freqRY = ' + currentCameraCon + '.frequencyRotY;\\nfloat $freqRZ = ' + currentCameraCon + '.frequencyRotZ;\\n// compute input value for noise function\\nfloat $noiseTransX = (frame * ($freqTX * .1) + ($seed +3));\\nfloat $noiseTransY = (frame * ($freqTY * .1) + ($seed +4));\\nfloat $noiseRotX = (frame * ($freqRX * .05) + ($seed+1));\\nfloat $noiseRotY = (frame * ($freqRY * .05) + ($seed+2));\\nfloat $noiseRotZ = (frame * ($freqRZ * .05) + ($seed+5));\\n// noise amplitudeX\\n$ampX = $ampX + (noise($noiseTransX) * $ampOffset);\\n$ampY = $ampY + (noise($noiseTransY) * $ampOffset);\\n$ampRX = $ampRX + (noise($noiseRotX) * $ampOffset)/10;\\n$ampRY = $ampRY + (noise($noiseRotY) * $ampOffset)/10;\\n$ampRZ = $ampRZ + (noise($noiseRotZ) * $ampOffset);\\n// Translations\\n// transX is sin wave * amplitude\\nfloat $sin_input_frequency = noise($noiseTransX) * .05 * 3.14;\\nfloat $cameraShakeTransX = sin($sin_input_frequency) * $ampX;\\n$sin_input_frequency = noise($noiseTransY) * .05 * 3.14;\\nfloat $cameraShakeTransY = sin($sin_input_frequency) * $ampY;\\n//Rotations\\n$sin_input_frequency = noise($noiseRotX) * .1 * 3.14;\\nfloat $cameraShakeRotX = sin($sin_input_frequency) * $ampRX;\\n$sin_input_frequency = noise($noiseRotY) * .1 * 3.14;\\nfloat $cameraShakeRotY = sin($sin_input_frequency) * $ampRY;\\n$sin_input_frequency = noise($noiseRotZ) * .1 * 3.14;\\nfloat $cameraShakeRotZ = sin($sin_input_frequency) * $ampRZ;\\n' + shake + '.translateX = $cameraShakeTransX;\\n' + shake + '.translateY = $cameraShakeTransY;\\n' + shake + '.rotateX = $cameraShakeRotX;\\n' + shake + '.rotateZ = $cameraShakeRotZ;\\n' + shake + '.rotateY = $cameraShakeRotY;\\n") -o ' + currentCameraCon + ' -ae 1 -uc all;')
     # mel.eval('expression -s ("float $mult = ' + currentCameraCon + '.magnitude;\\nfloat $ampR = ' + currentCameraCon + '.amplitudeRot;\\nfloat $ampX = ' + currentCameraCon + '.amplitudeTransX;\\nfloat $ampY = ' + currentCameraCon + '.amplitudeTransY;\\nfloat $freqRot = ' + currentCameraCon + '.frequencyRot;\\nfloat $seedR = ' + currentCameraCon + '.seedRot;\\nfloat $seedT = ' + currentCameraCon + '.seedTrans;\\nfloat $freqX = ' + currentCameraCon + '.frequencyTransX;\\nfloat $freqY = ' + currentCameraCon + '.frequencyTransY;\\nvector $noiseRot = <<(frame * ($freqRot * .1) + $seedR), (frame * ($freqRot * .1) + $seedR), (frame * ($freqRot * .1) + $seedR)>>;\\nvector $noiseTransX = <<(frame * ($freqX * .1) + $seedT), (frame * ($freqY * .1) + $seedT), (frame * ($freqRot * .1) + $seedT)>>;\\nvector $noiseTransY = <<(frame * ($freqX * .1) + $seedT), (frame * ($freqY * .1) + $seedT), (frame * ($freqRot * .1) + $seedT)>>;\\nvector $cameraShakeRot = (dnoise($noiseRot) * $ampR * .05) * $mult;\\nvector $cameraShakeTransX = (dnoise($noiseTransX) * $ampX * .05) * $mult;\\nvector $cameraShakeTransY = (dnoise($noiseTransY) * $ampY * .05) * $mult;\\n' + shake + '.translateX = $cameraShakeTransX.x;\\n' + shake + '.translateY = $cameraShakeTransY.y;\\n' + shake + '.rotateX = $cameraShakeRot.x;\\n' + shake + '.rotateY = $cameraShakeRot.y;\\n' + shake + '.rotateZ = $cameraShakeRot.z;\\n") -o ' + currentCameraCon + ' -ae 1 -uc all;')
     cmds.select(currentCameraCon, r=True)
 
+    return currentCameraCon

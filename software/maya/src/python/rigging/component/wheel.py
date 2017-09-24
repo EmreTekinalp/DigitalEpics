@@ -9,7 +9,7 @@
 @contact: e.tekinalp@icloud.com
 @package: tool/components/wheel
 @brief: wheel component
-@requires: tool.components.component
+@requires: rigging.core.component; rigging.utils.rsCameraUI 
 @version: 1.0.0
 """
 
@@ -25,10 +25,11 @@ import pymel.core as pm
 
 # third party modules
 from rigging.core import component
-from rigging.utils import control, maya_math
+from rigging.utils import control, maya_math, rsCameraUI
 reload(component)
 reload(control)
 reload(maya_math)
+reload(rsCameraUI)
 
 
 class Wheel(component.Component):
@@ -86,14 +87,15 @@ class Wheel(component.Component):
     def puppet(self):
         """Implement rig method"""
         self.guide_grp.v.set(0)
-        self.ctrl_rotation = control.Control(self, self.guide_rotation, 0)
+        self.ctrl_rotation = control.Control(self, self.guide_rotation, 0, 1)
         self.ctrl_bank_in = control.Control(self, self.guide_bank_in, 1, 1)
         self.ctrl_bank_out = control.Control(self, self.guide_bank_out, 1, 1)
         self.ctrl_rod_in = control.Control(self, self.guide_rod_in, 0)
-        self.ctrl_rod_out = control.Control(self, self.guide_rod_out, 0)
+        self.ctrl_rod_out = control.Control(self, self.guide_rod_out, 0, 1)
 
         self.setup_bank()
-        # self.setup_rod()
+        self.setup_rod()
+        self.create_shake(self.ctrl_rotation)
         self.plug()
 
     def setup_bank(self):
@@ -114,12 +116,61 @@ class Wheel(component.Component):
 
     def setup_rod(self):
         """Setup a a rod ik rig"""
-        self.jnt_rod_in = pm.createNode('joint', n=self.guide_rotation)
+        self.jnt_rod_in = pm.createNode('joint', p=self.guide_rod_in,
+                                        n=self.guide_rod_in.replace('guide', 'ik'))
+        self.jnt_rod_out = pm.createNode('joint', p=self.guide_rod_out,
+                                         n=self.guide_rod_out.replace('guide', 'ik'))
+        self.jnt_rod_out.setParent(self.jnt_rod_in)
+        self.jnt_rod_in.setParent(self.deform_grp)
+        pm.parentConstraint(self.ctrl_rod_in.srt, self.jnt_rod_in, mo=True)
+        self.ik_rod = pm.ikHandle(sj=self.jnt_rod_in, ee=self.jnt_rod_out,
+                                  n=self.jnt_rod_in.replace('ik_srt', 'ikh'),
+                                  solver='ikSCsolver')
+        self.ik_rod[0].setParent(self.deform_grp)
+        pm.pointConstraint(self.ctrl_rod_out.srt, self.ik_rod[0], mo=True)
+
+        # setup stretchable feature
+        dst_name = self.guide_rod_in.replace('guide_srt', 'distance_dg')
+        mlt_name = self.guide_rod_in.replace('guide_srt', 'divideToOne_dg')
+        cnd_name = self.guide_rod_in.replace('guide_srt', 'stretch_dg')
+        dst = pm.createNode('distanceBetween', n=dst_name)
+        mlt = pm.createNode('multiplyDivide', n=mlt_name)
+        cnd = pm.createNode('condition', n=cnd_name)
+        self.ctrl_rod_in.srt.worldMatrix.connect(dst.inMatrix1)
+        self.ctrl_rod_out.srt.worldMatrix.connect(dst.inMatrix2)
+        dst.distance.connect(mlt.input1X)
+        mlt.input2X.set(dst.distance.get())
+        mlt.operation.set(2)
+        mlt.outputX.connect(cnd.firstTerm)
+        mlt.outputX.connect(cnd.colorIfTrueR)
+        cnd.secondTerm.set(1)
+        cnd.operation.set(4)
+        cnd.outColorR.connect(self.jnt_rod_in.sx)
+
+    def create_shake(self, target):
+        """Create the shake rig based on algorithms from rsCameraUI
+        
+        :param target: Specify the target object to add the shake to
+        :type target: Control
+        """
+        ctrl_buffer = str(target.buffers[0])
+        shaker = pm.PyNode(rsCameraUI.rsCameraUIShakeAdd(ctrl_buffer))
+        shaker.getShape().v.set(0)
+        for i in pm.listAttr(shaker, ud=True):
+            if i == 'CameraShake':
+                target.srt.addAttr('shake', at='short', min=0, max=0)
+                target.srt.shake.set(cb=True, l=True)
+                continue
+            target.srt.addAttr(i, at='double', k=True)
+            target.srt.attr(i).connect(shaker.attr(i))
+            shaker.attr(i).set(l=True, k=False)
 
     def plug(self):
         """Setup the plug and socket connection"""
         self.ctrl_rotation.hrc.setParent(self.ctrl_bank_in.srt)
         self.ctrl_bank_in.hrc.setParent(self.ctrl_bank_out.srt)
+        pm.pointConstraint(self.ctrl_rotation.srt,
+                           self.ctrl_rod_out.buffers[0], mo=True)
 
     def deform(self):
         """Implement deform method"""

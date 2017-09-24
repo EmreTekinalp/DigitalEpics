@@ -56,7 +56,6 @@ def connect_construction_history(connector=None, nodes=[]):
         connector.addAttr('showHistory', at='short', min=0, max=1)
         connector.showHistory.set(e=True, cb=True)
 
-    print nodes
     for node in nodes:
         if not pm.isConnected(connector.showHistory, node.ihi):
             connector.showHistory >> node.ihi
