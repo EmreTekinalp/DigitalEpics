@@ -104,9 +104,5 @@ class Lamborghini(interface.RigInterface):
         self.wheel_lr.socket(self.chassy_rear.ctrl.srt)
         self.wheel_rr.socket(self.chassy_rear.ctrl.srt)
 
-asset = Lamborghini()
-asset.run(interface.FINAL)
-
-
-from projects.street_cinema.rigging.build.lamborghini import lamborghini
-reload(lamborghini)
+# asset = Lamborghini()
+# asset.run(interface.FINAL)

@@ -82,8 +82,7 @@ class RigInterface(object):
         model_path = os.path.abspath(os.path.join(asset_path, 'modeling'))
         latest_version = ''
         for f in os.listdir(model_path):
-            if f.startswith(asset_name):
-                latest_version = os.path.abspath(os.path.join(model_path, f))
+            latest_version = os.path.abspath(os.path.join(model_path, f))
         if not latest_version:
             raise ImportError('Could not find model version -> %s' % asset_name)
         cmds.file(new=True, f=True)
