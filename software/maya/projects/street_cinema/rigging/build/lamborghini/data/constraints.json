@@ -1,46 +1,112 @@
-{
-    "base_grp": [
+[
+    [
         "chassy_C_mid_ctrl_srt", 
+        "exterior_grp", 
         "parentConstraint"
     ], 
-    "exterior_grp": [
+    [
         "chassy_C_mid_ctrl_srt", 
-        "parentConstraint"
+        "exterior_grp", 
+        "scaleConstraint"
     ], 
-    "geo|interior_grp": [
+    [
         "chassy_C_mid_ctrl_srt", 
+        "geo|interior_grp", 
         "parentConstraint"
     ], 
-    "suspension_grp_FL": [
-        "chassy_C_rear_ctrl_srt", 
-        "parentConstraint"
+    [
+        "chassy_C_mid_ctrl_srt", 
+        "geo|interior_grp", 
+        "scaleConstraint"
     ], 
-    "suspension_grp_FR": [
-        "chassy_C_rear_ctrl_srt", 
-        "parentConstraint"
-    ], 
-    "suspension_grp_RL": [
-        "chassy_C_rear_ctrl_srt", 
-        "parentConstraint"
-    ], 
-    "suspension_grp_RR": [
-        "chassy_C_rear_ctrl_srt", 
-        "parentConstraint"
-    ], 
-    "tire_grp_FL": [
+    [
         "wheel_L_front_rotation_ctrl_srt", 
+        "tire_grp_FL", 
         "parentConstraint"
     ], 
-    "tire_grp_FR": [
-        "wheel_R_front_rotation_ctrl_srt", 
+    [
+        "wheel_L_front_rotation_ctrl_srt", 
+        "tire_grp_FL", 
+        "scaleConstraint"
+    ], 
+    [
+        "wheel_L_front_rodIn_ik_srt", 
+        "suspension_grp_FL", 
         "parentConstraint"
     ], 
-    "tire_grp_RL": [
+    [
+        "wheel_L_front_rodIn_ik_srt", 
+        "suspension_grp_FL", 
+        "scaleConstraint"
+    ], 
+    [
         "wheel_L_rear_rotation_ctrl_srt", 
+        "tire_grp_RL", 
         "parentConstraint"
     ], 
-    "tire_grp_RR": [
-        "wheel_R_rear_rotation_ctrl_srt", 
+    [
+        "wheel_L_rear_rotation_ctrl_srt", 
+        "tire_grp_RL", 
+        "scaleConstraint"
+    ], 
+    [
+        "chassy_C_rear_ctrl_srt", 
+        "suspension_grp_RL", 
         "parentConstraint"
+    ], 
+    [
+        "chassy_C_rear_ctrl_srt", 
+        "suspension_grp_RL", 
+        "scaleConstraint"
+    ], 
+    [
+        "wheel_R_front_rotation_ctrl_srt", 
+        "tire_grp_FR", 
+        "parentConstraint"
+    ], 
+    [
+        "wheel_R_front_rotation_ctrl_srt", 
+        "tire_grp_FR", 
+        "scaleConstraint"
+    ], 
+    [
+        "wheel_R_front_rodIn_ik_srt", 
+        "suspension_grp_FR", 
+        "parentConstraint"
+    ], 
+    [
+        "wheel_R_front_rodIn_ik_srt", 
+        "suspension_grp_FR", 
+        "scaleConstraint"
+    ], 
+    [
+        "wheel_R_rear_rotation_ctrl_srt", 
+        "tire_grp_RR", 
+        "parentConstraint"
+    ], 
+    [
+        "wheel_R_rear_rotation_ctrl_srt", 
+        "tire_grp_RR", 
+        "scaleConstraint"
+    ], 
+    [
+        "chassy_C_rear_ctrl_srt", 
+        "suspension_grp_RR", 
+        "parentConstraint"
+    ], 
+    [
+        "chassy_C_rear_ctrl_srt", 
+        "suspension_grp_RR", 
+        "scaleConstraint"
+    ],
+    [
+        "chassy_C_mid_ctrl_srt",
+        "base_grp",
+        "parentConstraint"
+    ],
+    [
+        "chassy_C_mid_ctrl_srt",
+        "base_grp",
+        "scaleConstraint"
     ]
-}
+]

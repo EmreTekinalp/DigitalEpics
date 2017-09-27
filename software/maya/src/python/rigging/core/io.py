@@ -19,8 +19,13 @@ __license__ = 'Digital Epics'
 __version__ = '1.0'
 
 # python
-from abc import abstractmethod
+import os
 
 # maya
 from maya import cmds
 import pymel.core as pm
+
+
+def join_path(*args):
+    """Construct and return a path by several given string values"""
+    return ''.join([os.path.abspath(os.path.join(arg)) for arg in args])
