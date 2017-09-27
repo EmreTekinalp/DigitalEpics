@@ -193,3 +193,7 @@ def asset_manager():
     from modeling.tool.asset_manager import main
     reload(main)
     main.main()
+
+
+def rig_build_menu():
+    """Generate a rig build menu"""
