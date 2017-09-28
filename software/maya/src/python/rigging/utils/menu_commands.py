@@ -77,6 +77,7 @@ def load_guides(path=None):
     """Load the guide locators"""
     if not path:
         path = io.join_path(data_path(), 'guides.json')
+    print path
     with open(path) as json_file:
         data = json.load(json_file)
     for key, value in data.items():

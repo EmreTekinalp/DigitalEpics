@@ -21,10 +21,6 @@ __version__ = '1.0'
 # python
 import os
 
-# maya
-from maya import cmds
-import pymel.core as pm
-
 
 def join_path(*args):
     """Construct and return a path by several given string values"""
